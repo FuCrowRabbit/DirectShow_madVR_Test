@@ -146,7 +146,7 @@
     <Text Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Lincence.md" />
+    <None Include="Lincence" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

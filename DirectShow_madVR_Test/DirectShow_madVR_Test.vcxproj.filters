@@ -34,6 +34,6 @@
     <Text Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Lincence.md" />
+    <None Include="Lincence" />
   </ItemGroup>
 </Project>
