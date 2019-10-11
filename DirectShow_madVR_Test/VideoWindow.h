@@ -1,7 +1,8 @@
 ﻿#pragma once
+#include "ChimeraPlayer.h"
 #include <boost/core/noncopyable.hpp>
 
-class VideoWindow : public CWindowImpl<VideoWindow>, public CMessageFilter, public CIdleHandler, boost::noncopyable
+class VideoWindow : public CWindowImpl<VideoWindow>, public CMessageFilter, public CIdleHandler, public boost::noncopyable, public ChimeraPlayer
 {
 protected:
    HWND hwnd_;

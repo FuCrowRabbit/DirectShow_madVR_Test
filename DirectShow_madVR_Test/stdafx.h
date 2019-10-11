@@ -27,4 +27,8 @@ extern CAppModule _Module;  // CComModuleからCAppModuleに置き換える
 #include <d3d9.h>
 #include <evr9.h>
 
+#pragma comment(lib, "strmiids.lib")
+#pragma comment(lib, "rpcrt4.lib")//ないと未解決のエラー
+#include "madVR/interfaces/mvrInterfaces.h"
+
 // TODO: プログラムに必要な追加ヘッダーをここで参照してください

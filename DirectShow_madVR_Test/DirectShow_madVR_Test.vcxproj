@@ -135,10 +135,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ChimeraException.h" />
+    <ClInclude Include="ChimeraPlayer.h" />
+    <ClInclude Include="madVR\interfaces\mvrInterfaces.h" />
+    <ClInclude Include="madVR\interfaces\SubRenderIntf.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="VideoWindow.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ChimeraException.cpp" />
+    <ClCompile Include="ChimeraPlayer.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="VideoWindow.cpp" />
   </ItemGroup>
