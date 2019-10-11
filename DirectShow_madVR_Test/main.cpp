@@ -17,9 +17,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
    ShowWindow(player->m_hWnd, nCmdShow);
 
-   auto nRet = theLoop.Run();
+   const auto nRet = theLoop.Run();
 
    _Module.RemoveMessageLoop();
 
    _Module.Term();
+
+   return nRet;
 }

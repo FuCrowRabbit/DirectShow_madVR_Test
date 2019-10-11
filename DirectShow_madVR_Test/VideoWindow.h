@@ -14,7 +14,6 @@ public:
 
    BOOL PreTranslateMessage(MSG* pMsg) override;
    BOOL OnIdle() override;
-   // WNDPROC GetWindowProc() override;
    void OnFinalMessage(HWND) override;
 
    virtual void onChar(UINT nChar, UINT nRepCnt, UINT nFlags);

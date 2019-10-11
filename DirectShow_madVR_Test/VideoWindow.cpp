@@ -47,6 +47,7 @@ void VideoWindow::onLButtonDblClk(UINT nFlags, CPoint point)
 
 void VideoWindow::onDestroy()
 {
+   PostQuitMessage(0);
 }
 
 int VideoWindow::onCreate(LPCREATESTRUCT lpCreateStruct)
