@@ -71,6 +71,28 @@ void ChimeraVideoWindow::fullScreen()
    ShowWindow(SW_MAXIMIZE);
 }
 
+auto ChimeraVideoWindow::ready() noexcept(false) -> void
+{
+   this->readyVideo();
+}
+
+auto ChimeraVideoWindow::ready(const wchar_t* path) noexcept(false) -> void
+{
+   this->setVideoPath(path);
+   this->ready();
+}
+
+auto ChimeraVideoWindow::play() const noexcept(false) -> void
+{
+   this->setVideoWindow();
+   ChimeraPlayer::play();
+}
+
+auto ChimeraVideoWindow::readyVideo() noexcept(false) -> void
+{
+   ChimeraPlayer::readyVideo();
+   this->setVideoWindow();
+}
 
 auto ChimeraVideoWindow::setVideoWindow() const noexcept(false) -> void
 {

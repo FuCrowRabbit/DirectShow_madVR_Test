@@ -15,13 +15,15 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
    auto player = std::make_unique<ChimeraVideoWindow>();
 
-   player->Create(nullptr, CWindow::rcDefault, L"", WS_OVERLAPPEDWINDOW | WS_VISIBLE);
-
-   player->ShowWindow(nCmdShow);
-
    try
    {
-      player->play(g_video_path);
+      player->ready(g_video_path);
+
+      player->Create(nullptr, CWindow::rcDefault, L"", WS_OVERLAPPEDWINDOW | WS_VISIBLE);
+
+      player->ShowWindow(nCmdShow);
+
+      player->play();
    }
    catch (std::exception& ex)
    {

@@ -11,8 +11,9 @@ public:
    ChimeraPlayer(const ChimeraPlayer&&) = delete;
    ChimeraPlayer& operator=(const ChimeraPlayer&) = delete;
    ChimeraPlayer& operator=(const ChimeraPlayer&&) = delete;
-   auto play() noexcept(false) -> void;
-   auto play(const wchar_t* path) -> void;
+   virtual auto ready() noexcept(false) -> void;
+   virtual auto ready(const wchar_t* path) -> void;
+   virtual auto play() const noexcept(false) -> void;
    auto setVideoPath(const wchar_t*) noexcept -> void;
 
 protected:
@@ -28,7 +29,5 @@ protected:
    CComQIPtr<IMadVRSubclassReplacement> mad_vr_subclass_replacement_;
 
    virtual void setVideoWindow(HWND& hwnd) const noexcept(false);
-
-private:
-   auto readyVideo() noexcept(false) -> void;
+   virtual auto readyVideo() noexcept(false) -> void;
 };
