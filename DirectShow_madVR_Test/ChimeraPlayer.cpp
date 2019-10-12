@@ -6,15 +6,41 @@ ChimeraPlayer::ChimeraPlayer(): now_playing_path_{nullptr}
 {
 }
 
-void ChimeraPlayer::check(const HRESULT hr) noexcept(false)
+auto ChimeraPlayer::check(const HRESULT hr) noexcept(false) -> void
 {
-   if (SUCCEEDED(hr)) throw ChimeraException(hr);
+   if (FAILED(hr)) throw ChimeraException(hr);
 }
 
-void ChimeraPlayer::play() noexcept(false)
+auto ChimeraPlayer::play() noexcept(false) -> void
+{
+   this->readyVideo();
+   check(this->media_control_->Run());
+}
+
+auto ChimeraPlayer::play(const wchar_t* path) noexcept(false) -> void
+{
+   this->setVideoPath(path);
+   this->play();
+}
+
+auto ChimeraPlayer::setVideoPath(const wchar_t* path) noexcept -> void
+{
+   this->now_playing_path_ = path;
+}
+
+auto ChimeraPlayer::setVideoWindow(HWND& hwnd) const noexcept(false) -> void
+{
+   check(this->video_window_->put_Owner(reinterpret_cast<OAHWND>(hwnd)));
+   check(this->video_window_->put_WindowStyle(WS_CHILD | WS_CLIPSIBLINGS));
+   check(this->video_window_->put_MessageDrain(reinterpret_cast<OAHWND>(hwnd)));
+   check(this->video_window_->SetWindowForeground(OATRUE));
+   check(this->video_window_->put_Visible(OATRUE));
+}
+
+auto ChimeraPlayer::readyVideo() noexcept(false) -> void
 {
    // フィルタグラフの作成
-   check(CoCreateInstance(CLSID_FilterGraph, nullptr, CLSCTX_INPROC_SERVER,IID_PPV_ARGS(&this->graph_builder_)));
+   check(CoCreateInstance(CLSID_FilterGraph, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&this->graph_builder_)));
    check(this->graph_builder_->QueryInterface(IID_PPV_ARGS(&this->media_control_)));
    check(this->graph_builder_->QueryInterface(IID_IBasicVideo2, reinterpret_cast<void**>(&this->base_filter_)));
    check(this->graph_builder_->QueryInterface(IID_IBasicVideo2, reinterpret_cast<void**>(&this->video_window_)));

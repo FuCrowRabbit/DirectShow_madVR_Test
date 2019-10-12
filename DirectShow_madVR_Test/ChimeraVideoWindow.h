@@ -2,16 +2,16 @@
 #include "ChimeraPlayer.h"
 #include <boost/core/noncopyable.hpp>
 
-class VideoWindow : public CWindowImpl<VideoWindow>, public CMessageFilter, public CIdleHandler, public boost::noncopyable, public ChimeraPlayer
+class ChimeraVideoWindow : public CWindowImpl<ChimeraVideoWindow>, public CMessageFilter, public CIdleHandler, public boost::noncopyable, public ChimeraPlayer
 {
 protected:
-   HWND hwnd_;
-   HINSTANCE hinstance_;
+   auto setVideoWindow() const noexcept(false) -> void;
+
 public:
-   VideoWindow();
-   virtual ~VideoWindow();
-   VideoWindow(const VideoWindow&&) = delete;
-   VideoWindow& operator=(const VideoWindow&&) = delete;
+   ChimeraVideoWindow();
+   virtual ~ChimeraVideoWindow();
+   ChimeraVideoWindow(const ChimeraVideoWindow&&) = delete;
+   ChimeraVideoWindow& operator=(const ChimeraVideoWindow&&) = delete;
 
    BOOL PreTranslateMessage(MSG* pMsg) override;
    BOOL OnIdle() override;
@@ -27,7 +27,7 @@ public:
    virtual void onMouseMove(UINT nFlags, CPoint point);
 
    // メッセージマップ
-   BEGIN_MSG_MAP_EX(VideoWindow)
+   BEGIN_MSG_MAP_EX(ChimeraVideoWindow)
       MSG_WM_CHAR(onChar)
       MSG_WM_PAINT(onPaint)
       MSG_WM_SIZE(onSize)

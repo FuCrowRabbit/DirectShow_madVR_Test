@@ -140,13 +140,13 @@
     <ClInclude Include="madVR\interfaces\mvrInterfaces.h" />
     <ClInclude Include="madVR\interfaces\SubRenderIntf.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="VideoWindow.h" />
+    <ClInclude Include="ChimeraVideoWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ChimeraException.cpp" />
     <ClCompile Include="ChimeraPlayer.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="VideoWindow.cpp" />
+    <ClCompile Include="ChimeraVideoWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Readme.md" />

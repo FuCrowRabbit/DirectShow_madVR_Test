@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "VideoWindow.h"
+#include "ChimeraVideoWindow.h"
 
 CAppModule _Module;  // CComModule‚©‚çCAppModule‚É’u‚«Š·‚¦‚é
 const wchar_t* g_video_path = L"D:\\sample.mp4";
@@ -13,11 +13,28 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
    CMessageLoop theLoop;
    _Module.AddMessageLoop(&theLoop);
 
-   auto player = std::make_unique<VideoWindow>();
+   auto player = std::make_unique<ChimeraVideoWindow>();
 
    player->Create(nullptr, CWindow::rcDefault, L"", WS_OVERLAPPEDWINDOW | WS_VISIBLE);
 
-   ShowWindow(player->m_hWnd, nCmdShow);
+   player->ShowWindow(nCmdShow);
+
+   try
+   {
+      player->play(g_video_path);
+   }
+   catch (std::exception& ex)
+   {
+      _RPTFN(_CRT_WARN, "deleting %Xh\n", ex.what());
+
+      player->DestroyWindow();
+
+      _Module.RemoveMessageLoop();
+
+      _Module.Term();
+
+      return -1;
+   }
 
    const auto nRet = theLoop.Run();
 
