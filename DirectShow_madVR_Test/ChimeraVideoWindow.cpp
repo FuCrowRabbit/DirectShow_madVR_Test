@@ -88,12 +88,6 @@ auto ChimeraVideoWindow::play() const noexcept(false) -> void
    ChimeraPlayer::play();
 }
 
-auto ChimeraVideoWindow::readyVideo() noexcept(false) -> void
-{
-   ChimeraPlayer::readyVideo();
-   this->setVideoWindow();
-}
-
 auto ChimeraVideoWindow::setVideoWindow() const noexcept(false) -> void
 {
    check(this->video_window_->put_Owner(reinterpret_cast<OAHWND>(this->m_hWnd)));

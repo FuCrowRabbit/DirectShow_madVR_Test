@@ -29,5 +29,5 @@ protected:
    CComQIPtr<IMadVRSubclassReplacement> mad_vr_subclass_replacement_;
 
    virtual void setVideoWindow(HWND& hwnd) const noexcept(false);
-   virtual auto readyVideo() noexcept(false) -> void;
+   auto readyVideo() noexcept(false) -> void;
 };

@@ -42,6 +42,4 @@ public:
    auto ready() -> void override;
    auto ready(const wchar_t* path) -> void override;
    auto play() const noexcept(false) -> void override;
-protected:
-   auto readyVideo() noexcept(false) -> void override;
 };
